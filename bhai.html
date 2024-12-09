@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday gallery 🎉🎉</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
+    section { 
+      height: 100vh; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      text-align: l; 
+      color: #fff; 
+    }
+    .welcome { background: #6a11cb; background: linear-gradient(135deg, #2575fc, #6a11cb); }
+    .photos { background-color: #000000; }
+    .video { background-color: #3c40c6; }
+    .wishes { background-color: #0be881; }
+    .finale { background-color: #ff4d4d; }
+    h1, h2 { font-size: 3rem; margin-bottom: 1rem; }
+    img { width: 80%; max-width: 400px; border-radius: 15px;  }
+    video { width: 50%; border-radius: 10px; position: absolute; right: 6%;}
+    .confetti { position: absolute; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+
+<!-- Welcome Section -->
+<section class="welcome">
+  <h1>🎉 Happy Birthday, Baljeet Bhai! 🎂🎂 🎉</h1>
+  <p>Scroll down to reveal a special surprise for you.</p>
+</section>
+
+<!-- Photo Section -->
+<section class="photos">
+  <h2>Memorable Moments</h2>
+  <img src="IMG-20241206-WA0006.jpg" alt="Memory 1" class="photo">
+  <img src="IMG_20181013_083913509.jpg" alt="Memory 2" class="photo">
+  <img src="IMG-20181109-WA0037.jpg" alt="Memory 3" class="photo">
+</section>
+
+<section class="photos">
+  <h2>Memorable Moments</h2>
+  <img src="IMG_20200902_135246.jpg" alt="Memory 1" class="photo">
+  <img src="IMG-20220702-WA0040.jpg" alt="Memory 2" class="photo">
+  <img src="IMG_20220414_171418.jpg" alt="Memory 3" class="photo">
+</section>
+
+<section class="photos">
+  <h2>Memorable Moments</h2>
+  <img src="IMG-0908.jpg" alt="Memory 1" class="photo">
+  <img src="IMG_20201211_142455.jpg" alt="Memory 2" class="photo">
+  <img src="IMG_20200915_112740.jpg" alt="Memory 3" class="photo">
+</section>
+
+<section class="photos">
+  <h2>Memorable Moments</h2>
+  <img src="IMG_20220506_165941.jpg" alt="Memory 1" class="photo">
+  <img src="IMG_20210724_112741.jpg" alt="Memory 2" class="photo">
+  <img src="dusshadhithakur-20241208-0001.jpg" alt="Memory 3" class="photo">
+</section>
+
+<section class="photos">
+  <h2>Memorable Moments</h2>
+  <img src="IMG_20210406_173532.jpg" alt="Memory 1" class="photo">
+  <img src="_baljeet_singh_1-20241208-0005.jpg" alt="Memory 2" class="photo">
+  <img src="IMG-20200828-WA0004.jpg" alt="Memory 3" class="photo">
+</section>
+
+<section class="photos">
+  <h2>Memorable Moments</h2>
+  <img src="_baljeet_singh_1-20241208-0006.jpg" alt="Memory 1" class="photo">
+  <img src="_baljeet_singh_1-20241208-0004.jpg" alt="Memory 2" class="photo">
+  <img src="IMG-3013.jpg" alt="Memory 3" class="photo">
+</section>
+
+<section class="photos">
+  <h2>Memorable Moments</h2>
+  <img src="_baljeet_singh_1-20241208-0003.jpg" alt="Memory 1" class="photo">
+  <img src="IMG-3013.jpg" alt="Memory 2" class="photo">
+  <img src="_baljeet_singh_1-20241208-0002.jpg" alt="Memory 3" class="photo">
+</section>
+
+<!-- Video Section -->
+<section class="video">
+  <h2>A Special Message For You</h2>
+  <video src="Project_12-10_Full HD 1080p_MEDIUM_FR30_(1).mp4" controls style="width: 35%; max-width: 300px; height: 1; margin-left: 0%;"></video>
+</section>
+
+<!-- Wishes Section -->
+<section class="wishes">
+  <h2>Birthday Wishes 🎉</h2>
+  <p class="wish">"Wishing you a day filled with happiness and a year filled with joy!"</p>
+  <p class="wish">"May all your dreams come true on your special day!"</p>
+  <p class="wish">"Enjoy every moment of your celebration, Bharat!"</p>
+</section>
+
+<!-- Finale Section -->
+<section class="finale">
+  <h1>🎉 The End 🎉</h1>
+  <p>Thank you for scrolling! Enjoy your special day, Bharat!</p>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+
+<script>
+  // GSAP Scroll Animations
+  gsap.from(".photo", { opacity: 0, y: 100, duration: 1, stagger: 0.3 });
+  gsap.from("video", { opacity: 0, scale: 0.8, duration: 1, scrollTrigger: ".video" });
+  
+  // ScrollMagic Controller
+  const controller = new ScrollMagic.Controller();
+  
+  document.querySelectorAll('.wish').forEach((wish, index) => {
+    new ScrollMagic.Scene({
+      triggerElement: wish,
+      triggerHook: 0.8,
+      reverse: false
+    })
+    .setTween(gsap.from(wish, { opacity: 0, x: -100, duration: 1 }))
+    .addTo(controller);
+  });
+
+  // Confetti Effect at Finale
+  const finale = document.querySelector('.finale');
+  finale.addEventListener('mouseenter', () => {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    finale.appendChild(confetti);
+    // Simulate confetti (you can use particle.js or similar)
+  });
+</script>
+
+</body>
+</html>
